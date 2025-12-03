@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 const APP_ID = "1971465743497236480";
 const DEV_KEY = "t6pog83605764b14fafbb9";
 const DEV_SECRET = "evcdc4abq9gew2729dv2k1c9";
-const TEMPLATE_ID_1 = "1977305463389167616";
 // ========================
 
 // SEND OTP
