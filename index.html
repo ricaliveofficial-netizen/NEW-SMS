@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send OTP</title>
+
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: Arial;
+            height: 100vh;
+            margin: 0;
+
+            /* Center fix */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 350px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+
+            /* Box always fixed center */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input, textarea, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none; /* নড়বে না */
+        }
+
+        button {
+            background: #2b7bff;
+            color: white;
+            cursor: pointer;
+            font-size: 17px;
+            border: none;
+        }
+
+        button:hover {
+            background: #1157d3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Send OTP Message</h2>
+
+    <label>Receiver Number</label>
+    <input type="text" id="phone" placeholder="8801XXXXXXXXX">
+
+    <label>Message</label>
+    <textarea id="message" placeholder="Type your message"></textarea>
+
+    <button onclick="sendOTP()">Send</button>
+
+    <p id="result" style="margin-top:20px; color:green;"></p>
+</div>
+
+<script>
+    async function sendOTP() {
+        const phone = document.getElementById("phone").value;
+        const message = document.getElementById("message").value;
+        
+        const res = await fetch("http://localhost:3000/send-otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone: phone, msg: message })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById("result").innerText = "OTP Sent Successfully!";
+        } else {
+            document.getElementById("result").innerText = "Failed to send!";
+        }
+    }
+</script>
+
+</body>
+</html>
