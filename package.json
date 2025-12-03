@@ -1,3 +1,13 @@
-"scripts": {
-  "start": "node server.js"
+{
+  "name": "new-sms",
+  "version": "1.0.0",
+  "description": "EngageLab SMS OTP Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.18.2"
+  }
 }
