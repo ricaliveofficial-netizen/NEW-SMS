@@ -4,7 +4,7 @@
   "description": "EngageLab SMS OTP Server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "npm start"
   },
   "dependencies": {
     "axios": "^1.6.8",
